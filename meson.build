@@ -136,6 +136,20 @@ if not cc.has_multi_arguments(cflags_custom_stack_protector)
 endif
 
 #
+# Dependencies
+#
+
+# on Debian < 11 .pc is not installed and dependency() fails, so we fallback to cc.find_library()
+if sgx
+    cjson_dep = dependency('cjson', required: false)
+    if not cjson_dep.found()
+        cjson_dep = cc.find_library('cjson')
+    endif
+
+    libcurl_dep = dependency('libcurl')
+endif
+
+#
 # The compilation
 #
 

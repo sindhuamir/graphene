@@ -139,14 +139,21 @@ endif
 # Dependencies
 #
 
-# on Debian < 11 .pc is not installed and dependency() fails, so we fallback to cc.find_library()
 if sgx
+    tomlc99_dep = subproject('tomlc99').get_variable('tomlc99_files_dep')
+    uthash_dep = subproject('uthash').get_variable('uthash_dep')
+
+    # this one is bizarre, will be compiled in different ways: one for LibOS, one for PAL
+    mbedtls_files_dep = subproject('mbedtls').get_variable('mbedtls_files_dep')
+
+    libcurl_dep = dependency('libcurl', version: '>7.58.0')
+
+    # on Debian < 11 .pc is not installed and dependency() fails, so we fallback to
+    # cc.find_library()
     cjson_dep = dependency('cjson', required: false)
     if not cjson_dep.found()
         cjson_dep = cc.find_library('cjson')
     endif
-
-    libcurl_dep = dependency('libcurl')
 endif
 
 #

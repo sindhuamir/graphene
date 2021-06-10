@@ -19,14 +19,11 @@ common_dep = declare_dependency(
     'string/toml_utils.c',
     'string/utils.c',
 
-    include_directories: include_directories(
-        '../include',
-        join_paths('../include/arch', host_machine.cpu_family()),
-    ),
+    include_directories: common_inc,
 
     dependencies: [
         uthash_dep,
-        toml_dep,
+        tomlc99_dep,
         mbedtls_dep,
     ],
 )

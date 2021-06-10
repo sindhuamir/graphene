@@ -1,0 +1,7 @@
+To change something in those files (using cJSON-1.7.12 as an example):
+
+    tar -xf cJSON-1.7.12-wrap.tar
+    cd cJSON-1.7.12; vim ...
+    ./reprotar.sh -cf cJSON-1.7.12-wrap.tar cJSON-1.7.12/
+    rm -rf cJSON-1.7.12
+    git add cJSON-1.7.12.tar

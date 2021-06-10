@@ -139,13 +139,13 @@ endif
 # Dependencies
 #
 
+tomlc99_dep = subproject('tomlc99-5be06807ad5f2230cad99e15380c4f4076c9dd83').get_variable('tomlc99_files_dep')
+uthash_dep = subproject('uthash-2.1.0').get_variable('uthash_dep')
+
+# this one is bizarre, will be compiled in different ways: one for LibOS, one for PAL
+mbedtls_files_dep = subproject('mbedtls-mbedtls-2.26.0').get_variable('mbedtls_files_dep')
+
 if sgx
-    tomlc99_dep = subproject('tomlc99').get_variable('tomlc99_files_dep')
-    uthash_dep = subproject('uthash').get_variable('uthash_dep')
-
-    # this one is bizarre, will be compiled in different ways: one for LibOS, one for PAL
-    mbedtls_files_dep = subproject('mbedtls').get_variable('mbedtls_files_dep')
-
     libcurl_dep = dependency('libcurl', version: '>7.58.0')
 
     # on Debian < 11 .pc is not installed and dependency() fails, so we fallback to

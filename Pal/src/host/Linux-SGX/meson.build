@@ -20,9 +20,6 @@ if not cc.has_multi_arguments(cflags_urts_stack_protector)
     cflags_urts_stack_protector = ['-fno-stack-protector']
 endif
 
-libgraphene_pal_sgx = cc.find_library('graphene-lib',
-    dirs: join_paths(meson.current_source_dir(), '.lib'))
-
 includes_sgx = [
     includes_pal_common,
     include_directories(
@@ -41,6 +38,8 @@ pal_sgx_generated_offsets_s = custom_target('generated-offsets-pal-sgx.s',
         '-I@0@'.format(meson.current_source_dir()),
         '-I@0@'.format(join_paths(meson.current_source_dir(),
             'protected-files')),
+        '-I@0@'.format(join_paths(meson.current_source_dir(),
+            '../../../../include')),
         '-I@0@'.format(join_paths(meson.current_build_dir(),
             '../../../../include')),
         '-I@0@'.format(join_paths(meson.current_source_dir(),
@@ -152,7 +151,7 @@ libpal_sgx = shared_library('pal',
     include_directories: includes_sgx,
     dependencies: [
         config_dep,
-        libgraphene_pal_sgx,
+        common_dep,
     ],
 
     install: true,
@@ -191,8 +190,8 @@ executable('loader',
 
     dependencies: [
         config_dep,
+        common_dep,
         aesm_proto_dep,
-        libgraphene_pal_sgx,
         dependency('libprotobuf-c'),
     ],
 

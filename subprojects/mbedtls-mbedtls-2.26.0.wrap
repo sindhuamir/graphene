@@ -1,9 +1,11 @@
 [wrap-file]
-directory = mbedtls-2.26.0
+directory = mbedtls-mbedtls-2.26.0
 source_url = https://github.com/ARMmbed/mbedtls/archive/mbedtls-2.26.0.tar.gz
 source_fallback_url = https://packages.grapheneproject.io/distfiles/mbedtls-2.26.0.tar.gz
 source_filename = mbedtls-2.26.0.tar.gz
-source_hash = 760687665ab41a5cff9c40b1053c19572bcdaadef1194e5cba1b5e6f824686e7
+source_hash = 35d8d87509cd0d002bddbd5508b9d2b931c5e83747d087234cc7ad551d53fe05
 
 # TODO after meson 0.55 (focal EOL), patch_directory
-patch_filename = mbedtls-2.26.0-wrap.tar.gz
+patch_url =
+patch_filename = mbedtls-mbedtls-2.26.0-wrap.tar.gz
+patch_hash = 40037aecd27d4c00c23382a94b5b3d35cdd5fb44e83a3e040f4a4f48fa04a466

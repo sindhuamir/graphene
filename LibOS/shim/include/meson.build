@@ -2,6 +2,7 @@
 includes_libos = [
     '.',
     'arch/@0@'.format(host_machine.cpu_family()),
+    '../../../include',
     '../../../common/include',
     '../../../common/include/arch/@0@'.format(host_machine.cpu_family()),
     '../../../Pal/include',

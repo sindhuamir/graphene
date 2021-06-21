@@ -152,6 +152,7 @@ libpal_sgx = shared_library('pal',
     dependencies: [
         config_dep,
         common_dep,
+        mbedtls_for_pal_dep,
     ],
 
     install: true,

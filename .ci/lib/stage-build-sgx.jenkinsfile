@@ -1,7 +1,6 @@
 stage('build') {
     sh '''
         openssl genrsa -3 -out Pal/src/host/Linux-SGX/signer/enclave-key.pem 3072
-        make ${MAKEOPTS}
     '''
 
     /*
@@ -54,7 +53,4 @@ stage('build') {
     ''').trim() + '/graphene'
 
     sh 'rm -rf build'
-
-    // prevent cheating and testing from repo
-    sh 'make ${MAKEOPTS} -C Runtime clean'
 }

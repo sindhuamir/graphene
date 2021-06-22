@@ -3,7 +3,8 @@
 #
 
 project(
-    'graphene', 'c',
+    'graphene',
+    'c', 'cpp',
     version: '1.0',
     license: 'LGPLv3+',
 
@@ -21,6 +22,7 @@ project(
 
     default_options: [
         'c_std=c11',
+        'cpp_std=c++14',
         'werror=true',
     ],
 )
@@ -139,6 +141,8 @@ endif
 # Dependencies
 #
 
+dcap = get_option('dcap') == 'enabled'
+
 tomlc99_dep = subproject('tomlc99-5be06807ad5f2230cad99e15380c4f4076c9dd83').get_variable('tomlc99_files_dep')
 uthash_dep = subproject('uthash-2.1.0').get_variable('uthash_dep')
 
@@ -153,6 +157,10 @@ if sgx
     cjson_dep = dependency('cjson', required: false)
     if not cjson_dep.found()
         cjson_dep = cc.find_library('cjson')
+    endif
+
+    if dcap
+        sgx_dcap_quoteverify_dep = cc.find_library('sgx_dcap_quoteverify')
     endif
 endif
 

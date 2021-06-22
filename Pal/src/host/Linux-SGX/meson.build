@@ -203,3 +203,5 @@ executable('loader',
 libpal_sgx_dep = declare_dependency(
     link_with: libpal_sgx,
 )
+
+subdir('tools')

@@ -6,6 +6,11 @@ option('sgx', type: 'combo', choices: ['disabled', 'enabled'],
 option('skeleton', type: 'combo', choices: ['disabled', 'enabled'],
     description: 'Build skeleton PAL')
 
+option('dcap', type: 'combo', choices: ['disabled', 'enabled'],
+    description: 'Build additional utilities linked against DCAP library')
+option('tests', type: 'combo', choices: ['disabled', 'enabled'],
+    description: 'Build and install tests (not needed unless developing Graphene)')
+
 option('sgx_driver', type: 'combo',
     choices: ['upstream', 'dcap1.6', 'dcap1.10', 'oot'],
     description: 'Flavour of the SGX driver')
